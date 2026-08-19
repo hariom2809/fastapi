@@ -1,0 +1,27 @@
+{
+    "O1" : {
+        "product_name": "Mobile",
+        "price": 2500,
+        "payment": "cod"
+    },
+    "O2" : {
+        "product_name": "Laptop",
+        "price": 45000,
+        "payment": "prepaid"
+    },
+    "O3" : {
+        "product_name": "Ear-buds",
+        "price": 2000,
+        "payment": "prepaid"
+    },
+    "O4" : {
+        "product_name": "Juicer",
+        "price": 5000,
+        "payment": "cod"
+    },
+    "O5" : {
+        "product_name": "shrit",
+        "price": 1200,
+        "payment": "cod"
+    }
+}
