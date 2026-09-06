@@ -1,0 +1,8 @@
+fastapi[standard]
+uvicorn[fastapi]
+pydantic
+pydantic-settings
+psycopg2
+sqlalchemy
+python-dotenv
+alembic
