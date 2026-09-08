@@ -27,3 +27,7 @@ def replace_task(task_id: UUID, payload: task_schema.ReplaceTask, db: Session = 
 @router.patch("/{task_id}", response_model=task_schema.GetTask, status_code=status.HTTP_200_OK)
 def update_task(task_id: UUID, payload: task_schema.UpdateTask, db: Session = Depends(get_db)):
     return task_service.update_task(task_id, payload, db)
+
+@router.delete("/{task_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_task(task_id: UUID, db: Session = Depends(get_db)):
+    task_service.delete_task(task_id, db)

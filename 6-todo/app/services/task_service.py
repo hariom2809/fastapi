@@ -43,7 +43,7 @@ def update_task(task_id: UUID, payload: task_schema.UpdateTask, db: Session):
             detail="Task Not Found"
         )
 
-    update_data = payload.model_dumP(exclude_unset=True)
+    update_data = payload.model_dump(exclude_unset=True)
 
     for key, value in update_data.items():
         setattr(task, key, value)
@@ -69,6 +69,22 @@ def replace_task(task_id: UUID, payload: task_schema.ReplaceTask, db: Session):
     task.completed_at = payload.completed_at
 
     db.commit()
-    db.refrehs(task)
+    db.refresh(task)
 
     return task
+
+def delete_task(task_id: UUID, db: Session):
+    query = select(Task).where(Task.id == task_id)
+    result = db.execute(query)
+    task = result.scalar_one_or_none()
+
+    if task is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Task Not Found"
+        )
+
+    db.delete(task)
+    db.commit()
+
+    return
